@@ -1,0 +1,5 @@
+{
+  "appId": "com.mydoc.app",
+  "appName": "MyDoc",
+  "webDir": "dist"
+}
