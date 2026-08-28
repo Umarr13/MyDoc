@@ -1,0 +1,71 @@
+### Phase 1: Foundation & CI/CD (Targeting v0.0.1 APK Release)
+
+**Task 1: Repository Initialization & Frontend Scaffolding**
+*   **Description:** Clone your GitHub repository and initialize a Vite + React + Tailwind CSS project for the frontend UI.
+*   **Files Touched:** `package.json`, `vite.config.js`, `tailwind.config.js`, `src/App.jsx`, `index.html`.
+*   **Completion Criteria:** Running `npm run dev` displays a default Vite screen styled with Tailwind.
+*   **Dependency:** None.
+
+**Task 2: Capacitor Integration & Android Project Setup**
+*   **Description:** Install Capacitor CLI and core dependencies, initialize the Capacitor project, and add the Android platform.
+*   **Files Touched:** `capacitor.config.json`, `android/` directory.
+*   **Completion Criteria:** Running `npx cap sync android` successfully generates the Android studio project folder.
+*   **Dependency:** Task 1.
+
+**Task 3: GitHub Actions CI/CD pipeline for v0.0.1 APK**
+*   **Description:** Create a GitHub Actions workflow that automatically builds the Capacitor Android APK and pushes it to GitHub Releases as version `0.0.1`.
+*   **Files Touched:** `.github/workflows/build-apk.yml`.
+*   **Completion Criteria:** A manual trigger of the workflow produces a downloadable `app-debug.apk` attached to a v0.0.1 GitHub release.
+*   **Dependency:** Task 2.
+
+### Phase 2: UI Implementation (Porting your HTML designs)
+
+**Task 4: Implement Splash Screen & Core Routing**
+*   **Description:** Port the "Initialization v6" HTML into a React component and set up React Router for navigating between screens.
+*   **Files Touched:** `src/App.jsx`, `src/components/SplashScreen.jsx`.
+*   **Completion Criteria:** Opening the app shows the MyDoc loading screen and automatically routes to the main terminal view after 2 seconds.
+*   **Dependency:** Task 1.
+
+**Task 5: Implement Terminal View UI**
+*   **Description:** Port the "Terminal v6" HTML design into a React component, including the bottom navigation bar and chat UI structure.
+*   **Files Touched:** `src/components/TerminalView.jsx`, `src/components/BottomNav.jsx`.
+*   **Completion Criteria:** The terminal UI is visible, responsive, and matches the provided Tailwind design.
+*   **Dependency:** Task 4.
+
+**Task 6: Implement Archive, Health, and Profile Views**
+*   **Description:** Port the remaining HTML designs (Archive v6, Health v6, Profile v6) into their respective React components.
+*   **Files Touched:** `src/components/ArchiveView.jsx`, `src/components/HealthView.jsx`, `src/components/ProfileView.jsx`.
+*   **Completion Criteria:** Clicking the icons in the bottom navigation successfully switches between the Terminal, Archive, Health, and Profile screens.
+*   **Dependency:** Task 5.
+
+### Phase 3: Python Backend (The "Intelligence" Engine)
+
+**Task 7: Scaffold Python Backend with `uv`**
+*   **Description:** Initialize the Python backend directory, set up `pyproject.toml` with `uv`, and install core dependencies (`fastapi`, `uvicorn`, `pydantic-settings`).
+*   **Files Touched:** `backend/pyproject.toml`, `backend/main.py`.
+*   **Completion Criteria:** Running `uv run uvicorn main:app` starts a local FastAPI server on port 8000.
+*   **Dependency:** None.
+
+**Task 8: Add Pydantic-Settings Config Loader**
+*   **Description:** Create a robust configuration manager to handle provider keys, engine modes (local vs cloud), and database paths.
+*   **Files Touched:** `backend/config.py`, `backend/.env.example`.
+*   **Completion Criteria:** Running a test script successfully prints the default configuration values loaded from the environment.
+*   **Dependency:** Task 7.
+
+**Task 9: Write ProviderProtocol Base Class & Router**
+*   **Description:** Define the abstract base class for LLM providers (complete, embed, stream) and a router that selects the provider based on the configuration.
+*   **Files Touched:** `backend/engine/base.py`, `backend/engine/router.py`.
+*   **Completion Criteria:** Python type-checker (`mypy` or `pyright`) passes without errors on the protocol definition.
+*   **Dependency:** Task 8.
+
+**Task 10: Implement Action Logger (SQLite + SQLModel)**
+*   **Description:** Set up a local SQLite database using SQLModel to log all file operations for the undo system and audit trail.
+*   **Files Touched:** `backend/db/database.py`, `backend/db/models.py`.
+*   **Completion Criteria:** A Python test script successfully creates the database file `mydoc.db` and inserts a dummy log entry.
+*   **Dependency:** Task 7.
+
+**Task 11: Connect Mobile UI to Python Backend**
+*   **Description:** Configure the Capacitor frontend to make HTTP requests to the local Python FastAPI server to send commands and receive responses.
+*   **Files Touched:** `src/api/client.js`, `src/components/TerminalView.jsx`.
+*   **Completion Criteria:** Typing a command in the frontend Terminal UI logs the payload on the Python backend server console and returns a dummy response to the UI.
+*   **Dependency:** Task 5 and Task 7.
