@@ -3,58 +3,38 @@ import { NavLink } from 'react-router-dom';
 
 export default function BottomNav() {
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around h-16 bg-background border-t border-border-default z-50">
-      <NavLink 
-        to="/terminal"
-        className={({ isActive }) => 
-          `flex flex-col items-center justify-center p-2 h-full w-full transition-colors ${
-            isActive ? 'bg-primary-container text-on-primary-container active:bg-primary active:text-on-primary' : 'text-on-surface-variant hover:bg-surface-variant'
-          }`
-        }
-      >
-        <span className="material-symbols-outlined text-headline-lg-mobile font-headline-lg-mobile" style={{ fontVariationSettings: "'FILL' 1" }}>
-          terminal
-        </span>
-      </NavLink>
+    <div className="fixed bottom-6 left-0 w-full flex justify-center z-50">
+      <nav className="flex items-center justify-around bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] px-4 py-3 w-[90%] max-w-sm">
+        
+        <NavLink 
+          to="/terminal" 
+          className={({ isActive }) => `flex items-center justify-center w-12 h-12 rounded-full transition-colors ${isActive ? 'bg-[#FF5C00] text-white shadow-md' : 'text-[#3E2C26] hover:bg-gray-100'}`}
+        >
+          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>home</span>
+        </NavLink>
 
-      <NavLink 
-        to="/archive"
-        className={({ isActive }) => 
-          `flex flex-col items-center justify-center p-2 h-full w-full transition-colors ${
-            isActive ? 'bg-primary-container text-on-primary-container active:bg-primary active:text-on-primary' : 'text-on-surface-variant hover:bg-surface-variant'
-          }`
-        }
-      >
-        <span className="material-symbols-outlined text-headline-lg-mobile font-headline-lg-mobile" style={{ fontVariationSettings: "'FILL' 1" }}>
-          folder
-        </span>
-      </NavLink>
+        <NavLink 
+          to="/archive" 
+          className={({ isActive }) => `flex items-center justify-center w-12 h-12 rounded-full transition-colors ${isActive ? 'bg-[#FF5C00] text-white shadow-md' : 'text-[#3E2C26] hover:bg-gray-100'}`}
+        >
+          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>filter_alt</span>
+        </NavLink>
 
-      <NavLink 
-        to="/health"
-        className={({ isActive }) => 
-          `flex flex-col items-center justify-center p-2 h-full w-full transition-colors ${
-            isActive ? 'bg-primary-container text-on-primary-container active:bg-primary active:text-on-primary' : 'text-on-surface-variant hover:bg-surface-variant'
-          }`
-        }
-      >
-        <span className="material-symbols-outlined text-headline-lg-mobile font-headline-lg-mobile" style={{ fontVariationSettings: "'FILL' 1" }}>
-          monitor_heart
-        </span>
-      </NavLink>
+        <NavLink 
+          to="/profile" 
+          className={({ isActive }) => `flex items-center justify-center w-12 h-12 rounded-full transition-colors ${isActive ? 'bg-[#FF5C00] text-white shadow-md' : 'text-[#3E2C26] hover:bg-gray-100'}`}
+        >
+          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>person</span>
+        </NavLink>
 
-      <NavLink 
-        to="/profile"
-        className={({ isActive }) => 
-          `flex flex-col items-center justify-center p-2 h-full w-full transition-colors ${
-            isActive ? 'bg-primary-container text-on-primary-container active:bg-primary active:text-on-primary' : 'text-on-surface-variant hover:bg-surface-variant'
-          }`
-        }
-      >
-        <span className="material-symbols-outlined text-headline-lg-mobile font-headline-lg-mobile" style={{ fontVariationSettings: "'FILL' 1" }}>
-          map
-        </span>
-      </NavLink>
-    </nav>
+        <NavLink 
+          to="/settings" 
+          className={({ isActive }) => `flex items-center justify-center w-12 h-12 rounded-full transition-colors ${isActive ? 'bg-[#FF5C00] text-white shadow-md' : 'text-[#3E2C26] hover:bg-gray-100'}`}
+        >
+          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>settings</span>
+        </NavLink>
+
+      </nav>
+    </div>
   );
 }

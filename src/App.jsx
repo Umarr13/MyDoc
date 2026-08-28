@@ -4,6 +4,8 @@ import SplashScreen from './components/SplashScreen';
 import TerminalView from './components/TerminalView';
 import BottomNav from './components/BottomNav';
 
+import ProfileView from './components/ProfileView';
+
 // Placeholders for Task 6
 function PlaceholderView({ title }) {
   return (
@@ -24,7 +26,8 @@ function App() {
         <Route path="/terminal" element={<TerminalView />} />
         <Route path="/archive" element={<PlaceholderView title="Archive" />} />
         <Route path="/health" element={<PlaceholderView title="Health" />} />
-        <Route path="/profile" element={<PlaceholderView title="Profile" />} />
+        <Route path="/profile" element={<ProfileView />} />
+        <Route path="/settings" element={<PlaceholderView title="Settings" />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
